@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Pan",
+    "description": "Basicamente Pan",
+    "price": 100,
+    "thumbnail": "direccion de imagen",
+    "code": 333,
+    "stock": 30,
+    "id": 1
+  },
+  {
+    "title": "Leche",
+    "description": "Leche fresca",
+    "price": 50,
+    "thumbnail": "otra direccion de imagen",
+    "code": 334,
+    "stock": 20,
+    "id": 2
+  }
+]
