@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 class ProductManager {
   constructor() {
@@ -143,14 +143,15 @@ const main = async () => {
     console.log(products);
   }
   console.log(productManager.getProductById(2));
-  await productManager.deleteProduct();
-  await productManager.updateProduct();
+  await productManager.deleteProduct(1); 
+  await productManager.updateProduct(2, { title: 'Nuevo título' });  
 
   const updatedProducts = await productManager.getProducts();
+
   console.log("Lista de productos actualizada:");
   console.log(updatedProducts);
 };
 
 main().catch((error) => console.error(error));
 
-
+export default ProductManager

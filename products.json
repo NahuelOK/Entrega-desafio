@@ -1,15 +1,6 @@
 [
   {
-    "title": "Pan",
-    "description": "Basicamente Pan",
-    "price": 100,
-    "thumbnail": "direccion de imagen",
-    "code": 333,
-    "stock": 30,
-    "id": 1
-  },
-  {
-    "title": "Leche",
+    "title": "Nuevo título",
     "description": "Leche fresca",
     "price": 50,
     "thumbnail": "otra direccion de imagen",
