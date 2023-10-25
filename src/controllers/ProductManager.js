@@ -2,16 +2,23 @@ import fs from "fs";
 
 class ProductManager {
   constructor() {
-    this.path = "./products.json";
+    this.path = "./src/api/products.json";
     this.products = [];
     this.currentId = 1;
   }
-
+  
   getProducts = async () => {
     try {
-      if (!fs.existsSync(this.path)) return this.products;
+      if (!fs.existsSync(this.path)) {
+        return this.products;
+      }
 
       const info = await fs.promises.readFile(this.path, "utf-8");
+      
+      if (!info.trim()) {
+        return this.products;
+      }
+
       this.products = JSON.parse(info);
       return this.products;
     } catch (error) {
@@ -154,4 +161,4 @@ const main = async () => {
 
 main().catch((error) => console.error(error));
 
-export default ProductManager
+export  {ProductManager}

@@ -1,35 +1,14 @@
-import express from 'express'
-import ProductManager from './ProductManager.js'
+import express from "express"
+import productsRouter from "./routes/products.router.js"
+import cartsRouter from "./routes/carts.router.js"
 
 const app = express()
+app.use(express.json())
 
-const products = new ProductManager('products.json')
+app.get("/", (req, res) => res.status(200).json({ message: "TODO Ok" }))
+app.use("/api/products", productsRouter)
+app.use("/api/carts", cartsRouter)
 
-app.get('/', (req, res) => {
-  return res.send('<h1> Servidor Express - 3º Desafio </h1>')
-})
-
-app.get('/api/products', (req, res) => {
-    const { limit } = req.query;
-  
-    const data = products.getProduct();
-  
-    let response;
-  
-    if (limit) {
-      response = data.slice(0, limit);
-    } else {
-      response = data;
-    }
-  
-    res.json({ data: response });
-  });
-  
-
-app.get('/api/products/:pid', (req, res) => {
-  const {pid} = req.params
-  return res.json(products.getProductById(parseInt(pid)))
-})
-
-
-app.listen(8080, () => { console.log('listening on port 8080 ...') })
+const PORT = process.env.PORT || 8080
+const server = app.listen(PORT, () => console.log(`Serven en http://localhost:${PORT}`))
+server.on('err', err => console.log(`Error: ${err.message}`))
