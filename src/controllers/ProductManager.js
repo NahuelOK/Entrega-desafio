@@ -136,7 +136,7 @@ const main = async () => {
   await productManager.addProduct(
     "Leche",
     "Leche fresca",
-    50,
+    58,
     "otra direccion de imagen",
     334,
     20

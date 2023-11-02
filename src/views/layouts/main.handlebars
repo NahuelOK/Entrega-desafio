@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>this is my page</h1>
+    {{{ body }}}
+
+    <input type="text" id="mensaje">
+    <button id="enviarMensaje">Enviar al backend</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        document.querySelector("#enviarMensaje").onclick = () => {
+            enviarMensaje();
+        };
+
+        document.querySelector("#mensaje").addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                enviarMensaje();
+            }
+        });
+
+        function enviarMensaje() {
+            const value = document.querySelector("#mensaje").value;
+            socket.emit("message", value);
+            document.querySelector("#mensaje").value = "";
+        }
+    </script>
+</body>
+</html>
